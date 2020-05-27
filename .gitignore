@@ -1,6 +1,6 @@
-lib/
-input/
-build/
-_pycache_/*
+dist/*
+input/*
+build/*
+*/__pycache__/*
 *.spec
 *.xlsx
