@@ -1,0 +1,1 @@
+pyinstaller -i icedove.ico -F FastExcel.py
