@@ -56,15 +56,18 @@ def write_sheet(wb, main_sheet, branch_sheet):
   title_row = 1
   for i, row in enumerate(read_rows(branch_sheet)):
     
+    # 当前行数
     cur_row = i + 1
 
+    # 判断是否是标题行
     if dict.is_head_first(branch_sheet.cell(row=cur_row, column=1).value):
       title_row = cur_row
       continue
 
-    # ignore title
+    # 忽略非数据行
     if cur_row <= title_row: continue
 
+    # 遍历所有数据行
     flag = True
     for cell in row:
       if cell.value == None: continue
@@ -82,7 +85,7 @@ def write_sheet(wb, main_sheet, branch_sheet):
 
       # 拷贝cell
       column_index = main_titles.index(_branch_title) + 1
-      value = abs(cell.value) if util.is_negative(cell.value) else cell.value
+      value = get_value(_branch_title, cell)
       append(main_sheet, column_index, MAIN_ROW, value)
 
 
@@ -107,9 +110,25 @@ def get_titles(sheet):
 def get_title(sheet, cell, _row):
   return sheet.cell(row=_row, column=cell.column).value
 
+
 # 写入cell
 def append(sheet, col, row, val):
   sheet.cell(column=col, row=row, value= val)
+
+
+# 获取cell值
+def get_value(title, cell):
+  value = abs(cell.value) if util.is_negative(cell.value) else cell.value
+  
+  if value == None or value == '':
+    return ""
+  elif title == "时间":  
+    return util.date_format(value) # 格式化时间
+  elif (title == "收入" or title == "支出") and (isinstance(value, str)): 
+    print(value)
+    return float(value.replace(',', ''))  # 格式化金额
+  else:
+    return value
 
 
 if __name__ == '__main__':
