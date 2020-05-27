@@ -125,7 +125,6 @@ def get_value(title, cell):
   elif title == "时间":  
     return util.date_format(value) # 格式化时间
   elif (title == "收入" or title == "支出") and (isinstance(value, str)): 
-    print(value)
     return float(value.replace(',', ''))  # 格式化金额
   else:
     return value
