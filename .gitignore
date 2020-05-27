@@ -1,6 +1,6 @@
 lib/
 input/
 build/
-_pycache_/
+_pycache_/*
 *.spec
 *.xlsx
