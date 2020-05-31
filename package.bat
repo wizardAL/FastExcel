@@ -1,1 +1,1 @@
-pyinstaller -i icedove.ico -F __main__.py
+pyinstaller -i img/excel_alt_1.ico -F __main__.py

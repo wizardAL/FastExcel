@@ -42,4 +42,7 @@ def date_format(_str):
       return _str
   except ValueError:
     return _str
-  
+
+
+def now_format(): 
+  return time.strftime('%Y%m%d-%H%M')

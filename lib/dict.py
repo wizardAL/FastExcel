@@ -42,6 +42,16 @@ headfirst_dic = {
   "交易时间": True
 }
 
+trans_dic = {
+  "流水号": "流水号",
+  "交易日": "交易时间",
+  "交易日期": "交易时间",
+  "交易时间": None,
+  "收/付方名称": "对方名称",
+  "对方户名": "对方名称",
+  "汇入金额": "金额",
+  "贷方金额": "金额"
+}
 
 # 判断是否在标题映射中，没有返回title
 def get_title_dic(title):
@@ -51,3 +61,7 @@ def get_title_dic(title):
 # 判断是否是首行
 def is_head_first(title):
   return headfirst_dic.get(title) == True
+
+# 
+def get_trans_dic(title):
+  return trans_dic.get(title)
