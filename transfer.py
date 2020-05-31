@@ -11,6 +11,7 @@ SOURCE_TITLES = ['批号','序号','银行','交易时间','流水号','对方�
 
 # 主行数
 def __main__():
+  print('开始读取文件，请等待......')
   file_list = excel.get_filelist(DIR_PATH, 'xlsx')
   for filename in file_list:
     transferTo(filename)
