@@ -2,18 +2,25 @@ import openpyxl
 import os
 import lib.util as util
 
-# 打开文件
+
 def open_file(path):
+  '''
+  打开文件
+  '''
   return openpyxl.load_workbook(path)
 
 
-# sheet读取
 def read_rows(sheet):
+  '''
+  sheet读取
+  '''
   return tuple(sheet.rows)
 
 
-# 获取所有单元格的标题
 def get_titles(sheet):
+  '''
+  获取所有单元格的标题
+  '''
   list = []
   for i, row in enumerate(tuple(sheet.rows)):
     if i != 0: return list
@@ -23,8 +30,10 @@ def get_titles(sheet):
   return list
 
 
-# 获取指定后缀的文件列表
 def get_filelist(dir, suffix):
+  '''
+  获取指定后缀的文件列表
+  '''
   list = []
   for home, dirs, files in os.walk(dir):
     files = [f for f in files if not f[0] == '~']
@@ -35,18 +44,24 @@ def get_filelist(dir, suffix):
   return list
 
 
-# 获取指定单元格的标题
 def get_title(sheet, _column, _row):
+  '''
+  获取指定单元格的标题
+  '''
   return sheet.cell(row=_row, column=_column).value
 
 
-# 写入cell
 def append(sheet, col, row, val):
+  '''
+  写入cell
+  '''
   sheet.cell(column=col, row=row, value= val)
 
 
-# 获取cell值
 def get_value(title, cell):
+  '''
+  获取cell值
+  '''
   value = abs(cell.value) if util.is_negative(cell.value) else cell.value
   value = value[1: len(value)] if str(value).startswith('`') else value
   

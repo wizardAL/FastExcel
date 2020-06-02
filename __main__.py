@@ -9,8 +9,11 @@ INPUT_PATH = "./input.xlsx"
 OUT_PATH = "./output.xlsx"
 MAIN_ROW = 1
 
-# 读取数据写入到母版
+
 def write_sheet(wb, main_sheet, branch_sheet):
+  '''
+  # 读取数据写入到母版
+  '''
   print("开始复制sheet: " + branch_sheet.title)
   main_titles = excel.get_titles(main_sheet)
 

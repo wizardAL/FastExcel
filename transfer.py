@@ -9,15 +9,6 @@ DIR_PATH = "./"
 SOURCE_TITLES = ['批号','序号','银行','交易时间','流水号','对方名称','金额']
 
 
-# 主行数
-def __main__():
-  print('开始读取文件，请等待......')
-  file_list = excel.get_filelist(DIR_PATH, 'xlsx')
-  for filename in file_list:
-    transferTo(filename)
-  print('=========================================')
-
-
 def transferTo(filename):
   wb = excel.open_file(filename)
   ws_origin = wb._sheets[0]
@@ -61,11 +52,18 @@ def transferTo(filename):
   print(filename + '保存成功...')
 
 
-# 生成标题
+
 def build_titles(ws):
+  '''
+  # 生成标题
+  '''
   for i, title in enumerate(SOURCE_TITLES):
      ws.cell(column=i+1, row=1, value=title)
 
 
 if __name__ == "__main__":
-    __main__()
+  print('开始读取文件，请等待......')
+  file_list = excel.get_filelist(DIR_PATH, 'xlsx')
+  for filename in file_list:
+    transferTo(filename)
+  print('=========================================')

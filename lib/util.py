@@ -6,8 +6,11 @@ import re
 
 DATE_FORMAT = '%Y-%m-%d'
 
-# 判断是否是负数
+
 def is_negative(str):
+  '''
+  判断是否是负数
+  '''
   try:
     return (isinstance(int(str), int) or isinstance(float(str), float)) and (str < 0)
   except ValueError:
@@ -16,8 +19,10 @@ def is_negative(str):
     return False
 
 
-# 日期格式化
 def date_format(_str):
+  '''
+  # 日期格式化
+  '''
   try:
     _str = str(_str)
     # YYYY/MM/DD

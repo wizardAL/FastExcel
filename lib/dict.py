@@ -66,6 +66,6 @@ def get_title_dic(title):
 def is_head_first(title):
   return headfirst_dic.get(title) == True
 
-# 
+# 获取文本转换词典
 def get_trans_dic(title):
   return trans_dic.get(title)
