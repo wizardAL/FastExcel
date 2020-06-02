@@ -48,7 +48,7 @@ def transferTo(filename):
 
     
     for cell in row:
-      origin_title = excel.get_title(ws_origin, cell, title_row)
+      origin_title = excel.get_title(ws_origin, cell.column, title_row)
       source_title = dict.get_trans_dic(origin_title)
       if source_title == None: continue
       

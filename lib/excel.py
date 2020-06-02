@@ -36,8 +36,8 @@ def get_filelist(dir, suffix):
 
 
 # 获取指定单元格的标题
-def get_title(sheet, cell, _row):
-  return sheet.cell(row=_row, column=cell.column).value
+def get_title(sheet, _column, _row):
+  return sheet.cell(row=_row, column=_column).value
 
 
 # 写入cell
@@ -48,6 +48,7 @@ def append(sheet, col, row, val):
 # 获取cell值
 def get_value(title, cell):
   value = abs(cell.value) if util.is_negative(cell.value) else cell.value
+  value = value[1: len(value)] if str(value).startswith('`') else value
   
   if value == None or value == '':
     return ""
@@ -57,3 +58,16 @@ def get_value(title, cell):
     return float(value.replace(',', ''))  # 格式化金额
   else:
     return value
+
+
+def get_cell_values(sheet, cell, title_row):
+  '''
+  获取当前cell所有的数据
+  '''
+  dict = {}
+  col = cell.column
+  for i in (1, col-1):
+    title = get_title(sheet, i, title_row)
+    value = get_title(sheet, i, cell.row)
+    dict[title] = value
+  return dict
