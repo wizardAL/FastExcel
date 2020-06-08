@@ -1,1 +1,0 @@
-pyinstaller -i img/excel_alt_1.ico -F __main__.py

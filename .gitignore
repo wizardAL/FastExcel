@@ -1,6 +1,8 @@
 dist/*
 input/*
 build/*
+bin/build/*
+bin/dist/*
 */__pycache__/*
 *.spec
 *.xlsx

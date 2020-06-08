@@ -70,18 +70,17 @@ if __name__ == '__main__':
   print('开始读取文件，请等待......')
   try:
     wb = excel.open_file(INPUT_PATH)
-  except IOError:
-    print('指定文件不存在，请检查以下文件是否存在：' + INPUT_PATH)
-  else:
     names = wb.sheetnames
     main_sheet = None
     for i, name in enumerate(names):
       if i == 0:
         continue
-      if i == 1:
+      elif i == 1:
         main_sheet = wb[name]
-        continue
-      write_sheet(wb, main_sheet, wb[name])
+      else:
+        write_sheet(wb, main_sheet, wb[name])
     wb.save(OUT_PATH)
-  print('执行完成.')
+    print('执行完成.')
+  except Exception as e:
+    print('系统发生异常：', e)
   os.system("pause")

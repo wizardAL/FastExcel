@@ -1,6 +1,9 @@
 # FastExcel
 一款财务excel处理小工具
 
+v1.3
+* 精简根目录
+
 v1.2
 * 新增文本转换功能`transfer`
 * 统一公共目录至`lib`
