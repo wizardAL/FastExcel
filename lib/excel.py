@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 import openpyxl
 import os
 import lib.util as util

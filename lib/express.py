@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 FUNC = '@func:'
 
 def exec_rule(value, param):
