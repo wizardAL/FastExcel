@@ -1,3 +1,4 @@
+.vscode/
 dist/*
 input/*
 build/*
@@ -7,3 +8,4 @@ bin/dist/*
 *.spec
 *.xlsx
 *.pyc
+log.txt

@@ -4,6 +4,7 @@ import lib.dict as dict
 import lib.util as util
 import lib.excel as excel
 import lib.express as expre
+import lib.logger as logger
 
 INPUT_PATH = "./input.xlsx"
 OUT_PATH = "./output.xlsx"
@@ -14,7 +15,7 @@ def write_sheet(wb, main_sheet, branch_sheet):
   '''
   # 读取数据写入到母版
   '''
-  print("开始复制sheet: " + branch_sheet.title)
+  logger.info("开始复制sheet: " + branch_sheet.title)
   main_titles = excel.get_titles(main_sheet)
 
   title_row = -1
@@ -49,7 +50,7 @@ def write_sheet(wb, main_sheet, branch_sheet):
       # 处理name
       global MAIN_ROW
       if flag :
-        print('成功复制第' + str(MAIN_ROW) + '行数据......')
+        logger.info('成功复制第' + str(MAIN_ROW) + '行数据......')
         flag = False
         MAIN_ROW = MAIN_ROW + 1
         clear_row(main_sheet, len(main_titles), MAIN_ROW) #清空源数据
@@ -67,7 +68,7 @@ def clear_row(sheet, col_num, row):
 
 # main methon
 if __name__ == '__main__':
-  print('开始读取文件，请等待......')
+  logger.info('开始读取文件，请等待......')
   try:
     wb = excel.open_file(INPUT_PATH)
     names = wb.sheetnames
@@ -80,7 +81,7 @@ if __name__ == '__main__':
       else:
         write_sheet(wb, main_sheet, wb[name])
     wb.save(OUT_PATH)
-    print('执行完成.')
+    logger.info('执行完成.')
   except Exception as e:
-    print('系统发生异常：', e)
+    logger.exception(e)
   os.system("pause")
