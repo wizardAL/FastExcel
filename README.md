@@ -1,4 +1,7 @@
+ [![Build Status](https://travis-ci.org/wizardAL/FastExcel.svg?branch=master)](https://travis-ci.org/wizardAL/FastExcel)
+ 
 # FastExcel
+
 一款财务excel处理小工具
 
 v1.3
